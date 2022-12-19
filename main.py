@@ -69,8 +69,6 @@ def main():
 
     if parsed_url.scheme:
         url_with_protocol = args.url
-    else:
-        url_with_protocol = f"https://{args.url}"
 
     if is_bitlink(bitly_token, url_without_protocol):
         try:
