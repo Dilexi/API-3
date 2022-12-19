@@ -8,6 +8,8 @@ from requests.exceptions import HTTPError
 
 
 API_URL = 'https://api-ssl.bitly.com/v4/'
+
+
 def shorten_link(token, url):
     bitly_url = "{}shorten".format(API_URL)
     params = {
@@ -52,16 +54,16 @@ def is_bitlink(token, url):
 def main():
     load_dotenv()
     bitly_token = os.getenv('bitly_token')
-    parser = argparse.ArgumentParser(description="Наша программа \
-    поможет вам сократить ссылку, или посчитать колличество кликов, \
-    по уже сокращенной ссылке. Для того, чтобы получить \
-    коллличество кликов, вставьте --url ссылку, у которой \
-    необходимо выполнить подсчет кликов.")
+    parser = argparse.ArgumentParser(
+        description="Наша программа \
+        поможет вам сократить ссылку, или посчитать колличество кликов, \
+        по уже сокращенной ссылке. Для того, чтобы получить \
+        коллличество кликов, вставьте --url ссылку, у которой \
+        необходимо выполнить подсчет кликов."
+    )
     parser.add_argument("--url", help="Введите ссылку")
     args = parser.parse_args()
     parsed_url = urlparse(args.url)
-
-
     
     url_without_protocol = f"{parsed_url.netloc}{parsed_url.path}"
 
