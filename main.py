@@ -68,9 +68,6 @@ def main():
     
     url_without_protocol = f"{parsed_url.netloc}{parsed_url.path}"
 
-    if parsed_url.scheme:
-        url_with_protocol = args.url
-
     if is_bitlink(bitly_token, url_without_protocol):
         try:
             print(count_clicks(bitly_token, url_without_protocol))
@@ -78,7 +75,7 @@ def main():
             print("Ошибка при подсчете кликов", error)
     else:
         try:
-            print(shorten_link(bitly_token, url_with_protocol))
+            print(shorten_link(bitly_token, args.url))
         except HTTPError as error:
             print("Неправильная ссылка: ", error)
 
